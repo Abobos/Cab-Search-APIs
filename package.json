@@ -17,6 +17,7 @@
     "@config": "src/config"
   },
   "scripts": {
+    "db:migrate": "ts-node -- src/migrations/tables.ts",
     "start": "nodemon --exec ts-node -- src/server.ts",
     "build": "tsc --build tsconfig.json"
   },
@@ -32,7 +33,6 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
-    "mongoose": "^5.13.2",
     "pg": "^7.12.1",
     "winston": "^3.2.1"
   },

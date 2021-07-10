@@ -3,11 +3,6 @@ import "module-alias/register";
 import http from "http";
 import { App } from "./app";
 import { logger } from "./utils";
-import connectDb from "@config/db";
-
-(async () => {
-  await connectDb();
-})();
 
 const expressApp = new App();
 

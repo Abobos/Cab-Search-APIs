@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
 
-import authRoute from "./auth";
+import driverRoute from "./location";
+import locationRoute from "./location";
+import carRoute from "./location";
 
 import { sendSuccessResponse, sendErrorResponse } from "@modules/sendResponse";
 
@@ -12,7 +14,7 @@ router.get("/", (req: Request, res: Response) =>
   })
 );
 
-router.use("/api/v1/auth", authRoute);
+router.use("/api/v1 ", [driverRoute, locationRoute, carRoute]);
 
 router.all("/*", (req: Request, res: Response) =>
   sendErrorResponse(res, 200, "This route is unavailable on the server")

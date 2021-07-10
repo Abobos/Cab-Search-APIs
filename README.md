@@ -41,11 +41,11 @@ To setup Property Pro Lite, These tools should be installed in your PC
 - Clone this repo
 - Open the
 - Rename .env-sample to .env
-- Enter your JWT_KEY and CLOUDINARY_URL
+
   ##### N.B
-  - Erase the CLOUDINARY_URL placeholder
-  * Your JWT_KEY can be any string value e.g "secret",
-  * Your CLOUDINARY_URL should be the URL specified in your cloudinary account. It contains your cloud_name, api_key, and api_secret.
+
+  - Your JWT_KEY can be any string value e.g "secret",
+  - Your CLOUDINARY_URL should be the URL specified in your cloudinary account. It contains your cloud_name, api_key, and api_secret.
 
 * Open terminal
 * Run `npm install`

@@ -1,26 +1,14 @@
-import logger from "@utils/logger";
-import "dotenv/config";
-import mongoose from "mongoose";
+import { envrionmentDetails } from "../interfaces";
 
-const { DATABASE_URL_DEV } = process.env;
+export const envDatabaseSettings = (env: string): envrionmentDetails => {
+  let config = {
+    envVariable: "",
+    dialect: "postgres",
+  };
 
-const connectDb = async () => {
-  try {
-    await mongoose.connect(
-      DATABASE_URL_DEV,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
-      },
-      () => {
-        logger.error("Database connected successfully");
-      }
-    );
-  } catch (error) {
-    logger.error("Database not connected", error.message);
-  }
+  env === "development"
+    ? (config.envVariable = "DATABASE_URL_DEV")
+    : (config.envVariable = "DATABASE_URL_PROD");
+
+  return config;
 };
-
-export default connectDb;
