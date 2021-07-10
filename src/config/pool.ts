@@ -10,18 +10,18 @@ const envConfig: envrionmentDetails = envDatabaseSettings(env);
 const { envVariable } = envConfig;
 
 const config = process.env[envVariable];
+
 const pool = new Pool({
   connectionString: config,
-  ssl: { rejectUnauthorized: false },
 });
 
 pool
   .connect()
   .then(() => {
-    console.log(`connected to ${env} database`);
+    logger.info(`connected to ${env} database`);
   })
   .catch((e) => {
-    console.log(
+    logger.error(
       `something went wrong when connecting to ${env} database`,
       e.message
     );

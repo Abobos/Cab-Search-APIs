@@ -147,3 +147,14 @@
     at readableAddChunk (_stream_readable.js:284:9)
     at Socket.Readable.push (_stream_readable.js:223:10)
     at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+2021-07-10 22:49:01 error: migration-error:database relation "drivers" already exists: Table not created
+2021-07-10 22:50:20 error: 500 The server does not support SSL connections 
+ Error: The server does not support SSL connections
+    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg/lib/connection.js:71:37)
+    at Object.onceWrapper (events.js:422:26)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:486:12)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:284:9)
+    at Socket.Readable.push (_stream_readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
