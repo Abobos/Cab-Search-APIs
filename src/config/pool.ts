@@ -10,7 +10,10 @@ const envConfig: envrionmentDetails = envDatabaseSettings(env);
 const { envVariable } = envConfig;
 
 const config = process.env[envVariable];
-const pool = new Pool({ connectionString: config });
+const pool = new Pool({
+  connectionString: config,
+  ssl: { rejectUnauthorized: false },
+});
 
 pool
   .connect()
