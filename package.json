@@ -19,7 +19,8 @@
   "scripts": {
     "db:migrate": "ts-node -- src/migrations/tables.ts",
     "start-dev": "nodemon --exec ts-node -- src/server.ts",
-    "build": "tsc --build tsconfig.json",
+    "build": "tsc",
+    "build-dev": "tsc --build tsconfig.json",
     "start": "node dist/server.js",
     "test": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\""
   },
