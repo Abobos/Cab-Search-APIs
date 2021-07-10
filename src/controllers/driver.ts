@@ -6,6 +6,7 @@ import { sendSuccessResponse } from "@modules/sendResponse";
 
 import { createToken } from "@utils/tokenHandler";
 import sendEmail from "@services/email";
+import { RequestWithUser } from "../interfaces";
 
 class AuthController {
   static async register(req: Request, res: Response, next: NextFunction) {
@@ -62,8 +63,27 @@ class AuthController {
       return next(err);
     }
   }
+
   static async verify(req: Request, res: Response, next: NextFunction) {
-    console.log(req);
+    try {
+      const userData = req;
+
+      const column = "isverified";
+
+      const condition = `id = ${userData.user.id} AND email = '${userData.user.email}'`;
+
+      const values = "TRUE";
+
+      const result = await DriverRepository.Update(column, condition, values);
+
+      return res.status(200).json({
+        status: "success",
+        isVerfied: result.isVerified,
+        message: "Verification successful",
+      });
+    } catch (error) {
+      return next(error);
+    }
   }
 }
 

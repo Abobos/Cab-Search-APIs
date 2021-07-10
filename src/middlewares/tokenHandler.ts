@@ -2,9 +2,9 @@ import { NextFunction, Request, Response } from "express";
 
 import { verifyToken } from "@utils/tokenHandler";
 
-import { RequestWithUser, UserData } from "../interfaces";
+import { UserData } from "../interfaces";
 
-const auth = (req: RequestWithUser, res: Response, next: NextFunction) => {
+const auth = (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.params.token;
 

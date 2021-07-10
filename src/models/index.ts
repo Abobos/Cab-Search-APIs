@@ -44,7 +44,7 @@ class UniversalModel {
   }
 
   async update(queryDetails: queryParamsIV): Promise<any> {
-    const queryStatement = `UPDATE ${this.resource} SET ${queryDetails.values} 
+    const queryStatement = `UPDATE ${this.resource} SET ${queryDetails.column} = '${queryDetails.values}'
                             WHERE ${queryDetails.condition} RETURNING ${queryDetails.column}`;
     logger.info(queryStatement);
 

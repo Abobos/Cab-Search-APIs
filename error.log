@@ -1,159 +1,34 @@
-2021-07-10 09:25:55 error: migration-error:database undefined: Table not created
-2021-07-10 09:28:07 error: migration-error:database syntax error at or near ")": Table not created
-2021-07-10 09:29:25 error: migration-error:database relation "drivers" does not exist: Table not created
-2021-07-10 09:33:44 error: migration-error:database relation "drivers" already exists: Table not created
-2021-07-10 10:02:29 error: migration-error:database relation "drivers" already exists: Table not created
-2021-07-10 20:12:53 error: migration-error:database relation "drivers" already exists: Table not created
-2021-07-10 20:15:00 error: migration-error:database relation "drivers" already exists: Table not created
-2021-07-10 20:27:42 error: 500 value too long for type character varying(10) 
- error: value too long for type character varying(10)
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:32:01 error: 500 duplicate key value violates unique constraint "drivers_phonenumber_key" 
- error: duplicate key value violates unique constraint "drivers_phonenumber_key"
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:33:05 error: 500 duplicate key value violates unique constraint "drivers_phonenumber_key" 
- error: duplicate key value violates unique constraint "drivers_phonenumber_key"
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:33:24 error: 500 duplicate key value violates unique constraint "drivers_phonenumber_key" 
- error: duplicate key value violates unique constraint "drivers_phonenumber_key"
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:36:44 error: 500 duplicate key value violates unique constraint "drivers_phonenumber_key" 
- error: duplicate key value violates unique constraint "drivers_phonenumber_key"
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:37:44 error: 500 duplicate key value violates unique constraint "drivers_licensenumber_key" 
- error: duplicate key value violates unique constraint "drivers_licensenumber_key"
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:39:00 error: 500 duplicate key value violates unique constraint "drivers_licensenumber_key" 
- error: duplicate key value violates unique constraint "drivers_licensenumber_key"
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:43:51 error: 500 value too long for type character varying(20) 
- error: value too long for type character varying(20)
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 20:59:18 error: 500 secretOrPrivateKey must have a value 
- Error: secretOrPrivateKey must have a value
-    at Object.module.exports (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/jsonwebtoken/sign.js:107:20)
-    at Object.exports.createToken (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/src/utils/tokenHandler.ts:7:21)
-    at register (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/src/controllers/driver.ts:29:21)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-2021-07-10 21:35:29 error: email-error: Invalid login: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbv
-534-5.7.14 DVW19DyXlIidrNjk1FIoSdAJ8-rOmD6oqarWYZoAfEPk6J6v5-egdFrhNgTDQpJU7SvR5
-534-5.7.14 xKImLkiUHM7M9oxe8rAiq1pk751qE-lAuEprEofVVB62TEAdiTzryOAiuwPepuPP>
+2021-07-10 23:06:13 error: email-error: Invalid login: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbu
+534-5.7.14 p1Z6gSdvCs2UrFQWpk_-N6I8DVwPUlH2kYsvZl3ZKUJF3HCj7P5Il55tVT-G1inTgDxj3
+534-5.7.14 unELsEGOym2Qc9vQ_RmyI_EzIg6l3Uz93qdBZVH8OOCshYawlJ8y9sttrcMIGQ3N>
 534-5.7.14 Please log in via your web browser and then try again.
 534-5.7.14  Learn more at
-534 5.7.14  https://support.google.com/mail/answer/78754 rn4sm4212184ejb.98 - gsmtp
-2021-07-10 21:40:06 error: 500 relation "drivers" does not exist 
- error: relation "drivers" does not exist
-    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
-    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
-    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 21:40:25 error: email-error: Invalid login: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbv
-534-5.7.14 0nr2YAY-yxNTC9eWfGFv_Nz3Y4BQs-gaY6WvWBEzXbH46FMa4Aso6e2YQanhHutgCUdaL
-534-5.7.14 Jp8AqYXyFIcOdz_K0m34Xv9ztg77G9Q80RBjrMEgnvVvzjUokfCzEciXLQh6Q53e>
+534 5.7.14  https://support.google.com/mail/answer/78754 cf29sm5302139edb.14 - gsmtp
+2021-07-10 23:32:17 error: email-error: Invalid login: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbs
+534-5.7.14 lIjC3kT6Got12KmnxQ5wfb0PXDlTFjpl4Ne7fVkVUHo0uMAFxQijrj4C_vfBb2IfJCm4g
+534-5.7.14 OG8J3yJbgtsv1FlIs04IL_AEaC8H2dBa9Q5nEl1FuH9ySGvPlCN8zpPJDz0ZevS7>
 534-5.7.14 Please log in via your web browser and then try again.
 534-5.7.14  Learn more at
-534 5.7.14  https://support.google.com/mail/answer/78754 l3sm3232625ejs.78 - gsmtp
-2021-07-10 21:42:41 error: email-error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
-535 5.7.8  https://support.google.com/mail/?p=BadCredentials u5sm5274115edv.64 - gsmtp
-2021-07-10 21:45:01 error: email-error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
-535 5.7.8  https://support.google.com/mail/?p=BadCredentials ze15sm4235899ejb.79 - gsmtp
-2021-07-10 21:50:47 error: email-error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
-535 5.7.8  https://support.google.com/mail/?p=BadCredentials c6sm5056801ede.17 - gsmtp
-2021-07-10 22:07:56 error: migration-error:database relation "drivers" already exists: Table not created
-2021-07-10 22:43:04 error: 500 The server does not support SSL connections 
- Error: The server does not support SSL connections
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg/lib/connection.js:71:37)
-    at Object.onceWrapper (events.js:422:26)
+534 5.7.14  https://support.google.com/mail/answer/78754 j24sm5318601edv.48 - gsmtp
+2021-07-10 23:56:12 error: 500 Cannot read property 'id' of undefined 
+ TypeError: Cannot read property 'id' of undefined
+    at verify (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/build/controllers/driver.js:51:49)
+    at Layer.handle [as handle_request] (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/index.js:281:22
+    at param (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/index.js:354:14)
+    at param (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/index.js:410:3)
+    at next (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/index.js:275:10)
+2021-07-10 00:01:46 error: 500 syntax error at or near "TRUE" 
+ error: syntax error at or near "TRUE"
+    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/index.js:11:42)
     at Socket.emit (events.js:315:20)
-    at addChunk (_stream_readable.js:309:12)
-    at readableAddChunk (_stream_readable.js:284:9)
-    at Socket.Readable.push (_stream_readable.js:223:10)
-    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
-2021-07-10 22:49:01 error: migration-error:database relation "drivers" already exists: Table not created
-2021-07-10 22:50:20 error: 500 The server does not support SSL connections 
- Error: The server does not support SSL connections
-    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg/lib/connection.js:71:37)
-    at Object.onceWrapper (events.js:422:26)
-    at Socket.emit (events.js:315:20)
-    at Socket.EventEmitter.emit (domain.js:486:12)
     at addChunk (_stream_readable.js:309:12)
     at readableAddChunk (_stream_readable.js:284:9)
     at Socket.Readable.push (_stream_readable.js:223:10)

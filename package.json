@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "start": "node build/server.js",
+    "start-dev": "nodemon --exec \"npm run build && npm run start\" --watch src --ext ts",
+    "db:migrate": "ts-node -- src/migrations/tables.ts",
+    "db:migrate-prod": "node build/migrations/tables.js"
+  },
   "_moduleAliases": {
     "@modules": "build/modules",
     "@exceptions": "build/exceptions",
@@ -15,14 +22,6 @@
     "@repositories": "build/repositories",
     "@utils": "build/utils",
     "@config": "build/config"
-  },
-  "scripts": {
-    "db:migrate": "ts-node -- src/migrations/tables.ts",
-    "start-dev": "nodemon --exec ts-node -- src/server.ts",
-    "build": "tsc --build tsconfig.json",
-    "start": "node build/server.js",
-    "db:migrate-prod": "node build/migrations/tables.js",
-    "test": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\""
   },
   "keywords": [],
   "author": "",

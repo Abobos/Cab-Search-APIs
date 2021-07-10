@@ -39,7 +39,7 @@ class DriverRpository {
         condition,
       });
 
-      return result.rows[0];
+      return result;
     } catch (e) {
       throw e;
     }
@@ -52,6 +52,20 @@ class DriverRpository {
         condition,
       });
       return result;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async Update(column: string, condition: string, values: string) {
+    try {
+      const result = await this.driver.update({
+        column,
+        condition,
+        values,
+      });
+
+      return result.rows[0];
     } catch (e) {
       throw e;
     }
