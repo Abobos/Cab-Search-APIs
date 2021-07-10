@@ -137,3 +137,4 @@
 535 5.7.8  https://support.google.com/mail/?p=BadCredentials ze15sm4235899ejb.79 - gsmtp
 2021-07-10 21:50:47 error: email-error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
 535 5.7.8  https://support.google.com/mail/?p=BadCredentials c6sm5056801ede.17 - gsmtp
+2021-07-10 22:07:56 error: migration-error:database relation "drivers" already exists: Table not created
