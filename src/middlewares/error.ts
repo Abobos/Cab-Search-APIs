@@ -18,7 +18,7 @@ export const defaultErrorHandler = (app: Application) =>
         logger.error(`${statusCode} ${error.message} \n ${error.stack}`);
 
       res.status(statusCode).send({
-        status: "error",
+        status: "failure",
         error: statusCode === 500 ? "Internal Server Error" : error.message,
       });
     }

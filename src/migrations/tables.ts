@@ -8,8 +8,9 @@ const drivers = `
     name VARCHAR(100) NOT NULL,
     email VARCHAR(60) NOT NULL UNIQUE,
     phoneNumber VARCHAR(10) NOT NULL UNIQUE,
-    licenseNumber VARCHAR(10) NOT NULL UNIQUE,
+    licenseNumber VARCHAR(15) NOT NULL UNIQUE,
     carNumber VARCHAR(20) NOT NULL UNIQUE,
+    isVerified BOOLEAN NOT NULL DEFAULT FALSE,
     registeredDate TIMESTAMP NOT NULL DEFAULT NOW()
   );`;
 

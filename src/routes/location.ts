@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { validator } from "@middlewares/auth";
-import AuthController from "@controllers/auth";
+import { validator } from "@middlewares/validate";
+import DriverController from "@controllers/driver";
 
 const locationRouter = Router();
 
-locationRouter.post("/location", validator, AuthController.signin);
+locationRouter.post("/location", validator, DriverController.register);
 
 export default locationRouter;

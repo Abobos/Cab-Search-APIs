@@ -1,14 +1,16 @@
 import { objectLiteral } from "../interfaces";
 
-export const emailRegex: RegExp = /^[A-Za-z0-9.-_]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-
-export const passwordRegex: RegExp = /(?=^.{8,}$)(?=.*[a-z].*)(?=.*[A-Z].*)(?=.*[0-9].*)/;
+export const emailRegex: RegExp =
+  /^[A-Za-z0-9.-_]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
 export const nameRegex: RegExp = /^[A-Za-z]+\s([A-Za-z]+\s)?[A-Za-z]+$/;
 
-export const addressRegex: RegExp = /./;
+export const licenseNumberRegex: RegExp =
+  /^[A-Z]{3}[0-9]{5}[A-Z]{2}([0-9]{1})$/;
 
-export const phoneNumberRegex: RegExp = /[\d]{11,}/;
+export const carNumberRegex: RegExp = /^[A-Z]{2}-\d{2}-[A-Z]{2}-\d{4}$/;
+
+export const phoneNumberRegex: RegExp = /[\d]{10}/;
 
 export const magicTrimmer = (payload: objectLiteral): objectLiteral => {
   const data = {};
@@ -31,14 +33,21 @@ export const validateAgainstRegex = (
   if (!value) return null;
 
   switch (regexType) {
-    case "password": {
+    case "phone_number": {
       errorMessage =
-        "password must contain at least eight characters, one Uppercase letter, one lowercase letter, and one digit";
+        "phone number is not valid. It should be a 10 digit number";
       break;
     }
 
-    case "phone_number": {
-      errorMessage = "phone number is not valid";
+    case "license_number": {
+      errorMessage =
+        "license number is not valid. It should be of the form 'ABC00578AA2'";
+      break;
+    }
+
+    case "car_number": {
+      errorMessage =
+        "car number is not valid. It should be of the form 'MH-01-XX-0001'";
       break;
     }
 
@@ -50,7 +59,7 @@ export const validateAgainstRegex = (
 
   if (!regex.test(value)) return errorMessage;
 
-  return undefined;
+  return;
 };
 
 export const errorChecker = (payload: objectLiteral): string[] | null => {
@@ -59,7 +68,9 @@ export const errorChecker = (payload: objectLiteral): string[] | null => {
   Object.keys(payload).forEach((key) => {
     if (payload[key]) {
       result[key] = payload[key];
-    } else if (payload[key] === null) {
+    }
+
+    if (payload[key] === null) {
       result[key] = `${key} is required`;
     }
   });

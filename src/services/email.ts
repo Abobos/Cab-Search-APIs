@@ -1,27 +1,38 @@
-import sgMail from "@sendgrid/mail";
+import nodemailer from "nodemailer";
+
 import "dotenv/config";
-
-import { InternalServerError } from "../exceptions";
-
-sgMail.setApiKey(<string>process.env.SENDGRID_API_KEY);
+import logger from "@utils/logger";
 
 const sendEmail = async (
   receiver: string,
   subject: string,
   content: string
-) => {
-  const data = {
+): Promise<boolean> => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+  });
+
+  const mailOptions = {
+    from: "noreply@carssearch.com",
     to: receiver,
-    from: "noreply@propertyprolite.com",
     subject: subject,
-    html: content
+    html: content,
   };
+
   try {
-    const response = await sgMail.send(data);
-    if (response.length) return "success";
-  } catch (err) {
-    throw new InternalServerError(err);
+    const report = await transporter.sendMail(mailOptions);
+    if (report.accepted) {
+      return true;
+    }
+  } catch (error) {
+    logger.error(`email-error: ${error.message}`);
+    return false;
   }
+  return true;
 };
 
 export default sendEmail;

@@ -1,3 +1,5 @@
+import { Request } from "express";
+
 export interface envrionmentDetails {
   envVariable: string;
   dialect: string;
@@ -27,4 +29,13 @@ export interface queryParamsIV {
 
 export interface objectLiteral {
   [props: string]: any;
+}
+
+interface UserData {
+  id: number;
+  email: string;
+}
+
+export interface RequestWithUser extends Request {
+  user: UserData;
 }

@@ -7,11 +7,17 @@ export const sendErrorResponse = (
 ) =>
   res.status(code).send({
     status: "error",
-    error: errorMessage
+    error: errorMessage,
   });
 
-export const sendSuccessResponse = (res: Response, code: number, data: any) =>
+export const sendSuccessResponse = (
+  res: Response,
+  code: number,
+  message: any,
+  data: any
+) =>
   res.status(code).send({
     status: "success",
-    data
+    message,
+    data,
   });

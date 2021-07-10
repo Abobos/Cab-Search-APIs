@@ -5,7 +5,7 @@ import { objectLiteral } from "../interfaces";
 
 export const createToken = (payload: objectLiteral) => {
   const token = jwt.sign(payload, <string>process.env.JWT_KEY, {
-    expiresIn: "24h"
+    expiresIn: "600s",
   });
   return token;
 };

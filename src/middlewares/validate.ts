@@ -2,9 +2,9 @@ import { Request, Response, NextFunction } from "express";
 
 import {
   emailRegex,
-  passwordRegex,
   nameRegex,
-  addressRegex,
+  licenseNumberRegex,
+  carNumberRegex,
   phoneNumberRegex,
   validateAgainstRegex,
   errorChecker,
@@ -18,35 +18,28 @@ export const validator = (req: Request, res: Response, next: NextFunction) => {
   const {
     name,
     email,
-    password,
-    address,
+    license_number: licenseNumber,
     phone_number: phoneNumber,
+    car_number: carNumber,
   } = userData;
 
-  let schema;
-
-  const signUpschema = {
+  const validationSchema = {
     name: validateAgainstRegex(name, nameRegex, "name"),
     email: validateAgainstRegex(email, emailRegex, "email"),
-    password: validateAgainstRegex(password, passwordRegex, "password"),
-    address: validateAgainstRegex(address, addressRegex, "address"),
     phone_number: validateAgainstRegex(
       phoneNumber,
       phoneNumberRegex,
       "phone_number"
     ),
+    license_number: validateAgainstRegex(
+      licenseNumber,
+      licenseNumberRegex,
+      "license_number"
+    ),
+    car_number: validateAgainstRegex(carNumber, carNumberRegex, "car_number"),
   };
 
-  const signinSchema = {
-    email: validateAgainstRegex(email, emailRegex, "email"),
-    password: validateAgainstRegex(password, passwordRegex, "password"),
-  };
-
-  req.route.path === "/signup"
-    ? (schema = signUpschema)
-    : (schema = signinSchema);
-
-  const errors = errorChecker(schema);
+  const errors = errorChecker(validationSchema);
 
   if (errors) return sendErrorResponse(res, 422, errors);
 
