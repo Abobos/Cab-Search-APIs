@@ -19,14 +19,19 @@
   "scripts": {
     "db:migrate": "ts-node -- src/migrations/tables.ts",
     "start": "nodemon --exec ts-node -- src/server.ts",
-    "build": "tsc --build tsconfig.json"
+    "build": "tsc --build tsconfig.json",
+    "test": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
+    "@types/chai": "^4.2.21",
+    "@types/chai-http": "^4.2.0",
+    "@types/mocha": "^8.2.3",
     "@types/mongoose": "^5.11.97",
+    "@types/pg": "^8.6.1",
     "bcryptjs": "^2.4.3",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
@@ -36,7 +41,7 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^9.0.2",
     "module-alias": "^2.2.2",
-    "pg": "^7.12.1",
+    "pg": "^8.6.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
@@ -46,7 +51,6 @@
     "@types/jsonwebtoken": "^8.3.5",
     "@types/module-alias": "^2.0.0",
     "@types/node": "^12.7.12",
-    "@types/pg": "^7.11.2",
     "nodemon": "^1.19.3",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4"

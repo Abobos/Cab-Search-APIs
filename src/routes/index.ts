@@ -10,7 +10,7 @@ const router = Router();
 
 router.get("/", (req: Request, res: Response) =>
   sendSuccessResponse(res, 200, {
-    message: "Welcome to Property Pro Lite REST API",
+    message: "Welcome to Cars Seacrh Application System API",
   })
 );
 

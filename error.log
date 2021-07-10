@@ -1,0 +1,4 @@
+2021-07-10 09:25:55 error: migration-error:database undefined: Table not created
+2021-07-10 09:28:07 error: migration-error:database syntax error at or near ")": Table not created
+2021-07-10 09:29:25 error: migration-error:database relation "drivers" does not exist: Table not created
+2021-07-10 09:33:44 error: migration-error:database relation "drivers" already exists: Table not created
