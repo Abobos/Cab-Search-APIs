@@ -19,8 +19,9 @@
   "scripts": {
     "db:migrate": "ts-node -- src/migrations/tables.ts",
     "start-dev": "nodemon --exec ts-node -- src/server.ts",
-    "build-dev": "tsc --build tsconfig.json",
-    "start": "ts-node -- src/server.ts",
+    "build": "tsc",
+    "start": "node build/server.js",
+    "db:migrate-prod": "node build/migrations/tables.js",
     "test": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\""
   },
   "keywords": [],
@@ -39,7 +40,6 @@
     "module-alias": "^2.2.2",
     "nodemailer": "^6.6.2",
     "pg": "^8.6.0",
-    "ts-node": "^10.1.0",
     "typescript": "^4.3.5",
     "winston": "^3.2.1"
   },
@@ -56,6 +56,7 @@
     "@types/node": "^12.7.12",
     "@types/nodemailer": "^6.4.4",
     "@types/pg": "^8.6.1",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "ts-node": "^8.4.1"
   }
 }
