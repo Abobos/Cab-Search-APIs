@@ -6,7 +6,8 @@ import { sendSuccessResponse } from "@modules/sendResponse";
 
 import { createToken } from "@utils/tokenHandler";
 import sendEmail from "@services/email";
-import { RequestWithUser } from "../interfaces";
+
+import { AuthenticationError } from "../exceptions";
 
 class AuthController {
   static async register(req: Request, res: Response, next: NextFunction) {
@@ -43,8 +44,6 @@ class AuthController {
         msg
       );
 
-      console.log({ emailResponse });
-
       let message = "";
 
       if (emailResponse) {
@@ -68,17 +67,26 @@ class AuthController {
     try {
       const userData = req;
 
+      const findColumn = "*";
+
+      const findCondition = `id = ${userData.user.id} AND email = '${userData.user.email}'`;
+
+      const driver = await DriverRepository.findOne(findColumn, findCondition);
+
+      console.log({ driver });
+
+      if (!driver) throw new AuthenticationError("Invalid Credentials");
+
       const column = "isverified";
 
       const condition = `id = ${userData.user.id} AND email = '${userData.user.email}'`;
 
       const values = "TRUE";
 
-      const result = await DriverRepository.Update(column, condition, values);
+      await DriverRepository.Update(column, condition, values);
 
       return res.status(200).json({
         status: "success",
-        isVerfied: result.isVerified,
         message: "Verification successful",
       });
     } catch (error) {

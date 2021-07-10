@@ -39,7 +39,7 @@ class DriverRpository {
         condition,
       });
 
-      return result;
+      return result.rowCount;
     } catch (e) {
       throw e;
     }
@@ -65,7 +65,7 @@ class DriverRpository {
         values,
       });
 
-      return result.rows[0];
+      return result;
     } catch (e) {
       throw e;
     }
