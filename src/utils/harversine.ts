@@ -3,14 +3,19 @@ const toRad = (value: number): number => {
 };
 
 export const calculateHaversineDistance = (
-  latitude1: number,
-  longitude1: number,
+  latitude1: any,
+  longitude1: any,
   latitude2: number,
   longitude2: number
 ): number => {
+  latitude1 = +latitude1;
+  longitude1 = +longitude1;
+
   const R = 6371; // km
+
   const latitudeDiff = toRad(latitude2 - latitude2);
   const longitudeDiff = toRad(longitude2 - longitude1);
+
   latitude1 = toRad(latitude1);
   latitude2 = toRad(latitude2);
 

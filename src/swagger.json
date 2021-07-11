@@ -14,7 +14,7 @@
     },
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "car-search-apis.herokuapp.com",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -48,7 +48,7 @@
             "operationId": "RegisterDriver",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Drivers"
+              "$ref": "#/definitions/RegisterDriver"
             }
           }
         ],
@@ -103,25 +103,15 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "type",
+            "name": "location",
             "in": "body",
-            "description": "drivers' Id",
+            "summary": "",
+            "description": "Details of the driver register",
+            "operationId": "SaveDriverLocation",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "type",
-            "in": "body",
-            "description": "drivers' latitude",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "state",
-            "in": "body",
-            "description": "drivers' longitude",
-            "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/SaveDriverLocation"
+            }
           }
         ],
         "responses": {
@@ -134,7 +124,8 @@
         }
       }
     },
-    "/cabs": {
+
+    "/cabs?latitude={latitude}&longitude={longitude}": {
       "get": {
         "tags": ["Cabs"],
         "summary": "Get available cabs",
@@ -144,16 +135,16 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "type",
-            "in": "body",
-            "description": "passenger's latitude",
+            "name": "latitude",
+            "in": "query",
+            "description": "latitude of passenger's location",
             "required": true,
             "type": "string"
           },
           {
-            "name": "state",
-            "in": "body",
-            "description": "passenger's longitude",
+            "name": "longitude",
+            "in": "query",
+            "description": "longitude of passengers location",
             "required": true,
             "type": "string"
           }
@@ -204,6 +195,27 @@
       },
       "xml": {
         "name": "RegisterDriver"
+      }
+    },
+    "SaveDriverLocation": {
+      "type": "object",
+      "required": ["driverId", "latitude", "longitude"],
+      "properties": {
+        "driverId": {
+          "type": "string",
+          "example": "1"
+        },
+        "latitude": {
+          "type": "string",
+          "example": "12.9724"
+        },
+        "longitude": {
+          "type": "string",
+          "example": "77.580643"
+        }
+      },
+      "xml": {
+        "name": "SaveDriverLocation"
       }
     }
   }

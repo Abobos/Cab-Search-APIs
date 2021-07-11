@@ -21,7 +21,9 @@ export const magicTrimmer = (payload: objectLiteral): objectLiteral => {
 
   Object.keys(payload).forEach((key) => {
     const value: any = payload[key];
-    Object.assign(data, { [key]: value.trim() });
+    Object.assign(data, {
+      [key]: typeof value !== "string" ? value : value.trim(),
+    });
   });
 
   return data;
@@ -34,6 +36,7 @@ export const validateAgainstRegex = (
 ): any => {
   let errorMessage: string = "";
 
+  console.log({ value, regexType });
   if (typeof value !== "number") {
     if (!value) return null;
   }

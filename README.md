@@ -1,14 +1,14 @@
 # Cab-Search-APIs
 
-Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
+Cab Search System Application Rest APIs is an api that allow users to get for available cars
 
 ## Features
 
 ### Required Features
 
 - User (admin) can register drivers
-- User (driver) can save location
-- User can get the nearest drivers
+- User (admin) can save location
+- User can get the nearest available cars
 
 #### Tools
 
@@ -26,7 +26,7 @@ Property Pro Lite is a platform where people can create and/or search properties
 
 #### API Docs
 
-- [Swagger](https://propertyprolite1.herokuapp.com/api-docs)
+- [Swagger](https://car-search-apis.herokuapp.com//api-docs)
 
 #### Getting Started
 
@@ -45,19 +45,17 @@ To setup Property Pro Lite, These tools should be installed in your PC
   ##### N.B
 
   - Your JWT_KEY can be any string value e.g "secret",
-  - Your CLOUDINARY_URL should be the URL specified in your cloudinary account. It contains your cloud_name, api_key, and api_secret.
+  - Your DATABASE_URL_DEV should be your connection string,
+  - Your EMAIL should be your email for authenticating node mailer,
+  - Your EMAIL_PASSWORD should be your password to the email for authenticating node mailer
 
 * Open terminal
-* Run `npm install`
+* Run `npm install` or `yarn install`
 
 ### Running the app
 
-- Run `npm run dev:start`
+- Run `npm run start:dev` or `yarn start:dev`
 
 ### Running the tests
 
-- Run `npm test`
-
-### Acknowledgments
-
-- I learnt how to document my api [here](https://blog.cloudboost.io/adding-swagger-to-existing-node-js-project-92a6624b855b)
+- Run `npm test-dev` or `yarn test-dev`

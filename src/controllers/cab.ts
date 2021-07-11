@@ -8,6 +8,7 @@ import {
 import { AvailableCars } from "../interfaces";
 
 import { calculateHaversineDistance } from "@utils/harversine";
+import logger from "@utils/logger";
 
 class LocationController {
   static async getAvailableCabs(
@@ -25,9 +26,11 @@ class LocationController {
         sendSuccessResponseII(res, 200, "no available cars");
       }
 
-      const { latitude: latitude1, longitude: longitude2 } = req.body;
+      const { latitude: latitude1, longitude: longitude2 } = req.query;
 
       const availableCars = rows.filter((car: AvailableCars) => {
+        logger.info(JSON.stringify(car));
+
         const distance = Math.round(
           calculateHaversineDistance(
             latitude1,
@@ -37,6 +40,7 @@ class LocationController {
           )
         );
 
+        logger.info(distance);
         return distance <= 4;
       });
 

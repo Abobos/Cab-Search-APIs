@@ -15,7 +15,7 @@ describe("App", () => {
         expect(res.body).to.be.an("object");
         expect(res.body.status).to.eql("success");
         expect(res.body.message).to.eql(
-          "Welcome to Cars Searh Application System API"
+          "Welcome to Cabs Searh Application System API"
         );
         done();
       });

@@ -54,8 +54,12 @@ export const validateLocationDetails = (
   res: Response,
   next: NextFunction
 ) => {
-  const { driverId, latitude, longitude } = req.body;
+  const locationData = magicTrimmer(req.body);
 
+  console.log({ locationData });
+  const { driverId, latitude, longitude } = locationData;
+
+  console.log({ latitude });
   const validationSchema = {
     driverId: validateAgainstRegex(driverId, driverIdRegex, "driverId"),
     latitude: validateAgainstRegex(latitude, locationRegex, "latitude"),
@@ -74,7 +78,9 @@ export const validateCabDetails = (
   res: Response,
   next: NextFunction
 ) => {
-  const { latitude, longitude } = req.body;
+  const CabData = magicTrimmer(req.query);
+
+  const { latitude, longitude } = CabData;
 
   const validationSchema = {
     latitude: validateAgainstRegex(latitude, locationRegex, "latitude"),

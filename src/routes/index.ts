@@ -17,7 +17,7 @@ router.get("/", (req: Request, res: Response) =>
   sendSuccessResponseII(
     res,
     200,
-    "Welcome to Cars Searh Application System API"
+    "Welcome to Cabs Searh Application System API"
   )
 );
 
