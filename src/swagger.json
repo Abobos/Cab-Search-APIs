@@ -65,8 +65,8 @@
         }
       }
     },
-    "/drivers/;token/verify": {
-      "post": {
+    "/drivers/{token}/verify": {
+      "get": {
         "tags": ["Drivers"],
         "summary": "Verify a drivers' email",
         "description": "",
@@ -75,13 +75,11 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "user",
+            "name": "token",
             "in": "path",
-            "summary": "",
-            "desciption": "Details of user that wants to sign in",
-            "operationId": "SignInAUser",
-            "type": "string",
-            "required": true
+            "description": "token of the driver",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -137,7 +135,7 @@
       }
     },
     "/cabs": {
-      "post": {
+      "get": {
         "tags": ["Cabs"],
         "summary": "Get available cabs",
         "description": "",

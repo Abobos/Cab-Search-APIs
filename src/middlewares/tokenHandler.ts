@@ -21,10 +21,7 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
     const findColumn = "*";
     const findCondition = `id = ${req.user.id} AND email = '${req.user.email}'`;
 
-    const driver = !!(await DriverRepository.findOne(
-      findColumn,
-      findCondition
-    ));
+    const driver = await DriverRepository.findOne(findColumn, findCondition);
 
     const userDoesNotExist = "Invalid authentication details";
 
