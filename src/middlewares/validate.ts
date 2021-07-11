@@ -68,3 +68,22 @@ export const validateLocationDetails = (
 
   next();
 };
+
+export const validateCabDetails = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { latitude, longitude } = req.body;
+
+  const validationSchema = {
+    latitude: validateAgainstRegex(latitude, locationRegex, "latitude"),
+    longitude: validateAgainstRegex(longitude, locationRegex, "longitude"),
+  };
+
+  const errors = errorChecker(validationSchema);
+
+  if (errors) return sendErrorResponse(res, 422, errors);
+
+  next();
+};

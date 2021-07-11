@@ -6,7 +6,7 @@ import app from "../src/server";
 chai.use(chaiHttp);
 
 describe("POST /locations", () => {
-  it("", (done) => {
+  it("Should return status of failure if driverId is not provided", (done) => {
     chai
       .request(app)
       .post("/api/v1/locations")

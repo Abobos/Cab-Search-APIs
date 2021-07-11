@@ -49,8 +49,7 @@ class LocationController {
 
         const { id } = await LocationRepository.create(column, values);
 
-        console.log({ id });
-        sendSuccessResponseII(res, 200, "Location Save successfully");
+        if (id) sendSuccessResponseII(res, 200, "Location Save successfully");
       } else {
         const column = "latitude";
         const columnII = "longitude";
@@ -61,9 +60,9 @@ class LocationController {
         await LocationRepository.UpdateMultiple(
           column,
           columnII,
-          valuesII,
           condition,
-          values
+          values,
+          valuesII
         );
 
         sendSuccessResponseII(res, 200, "Location Save successfully");

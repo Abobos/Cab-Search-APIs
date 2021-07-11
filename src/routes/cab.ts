@@ -1,9 +1,10 @@
 import { Router } from "express";
 
-import CarController from "@controllers/cab";
+import CabController from "@controllers/cab";
 
+import { validateCabDetails } from "@middlewares/validate";
 const carRouter = Router();
 
-carRouter.get("/cabs", CarController.getAvailableCabs);
+carRouter.get("/cabs", validateCabDetails, CabController.getAvailableCabs);
 
 export default carRouter;

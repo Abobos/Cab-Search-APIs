@@ -63,8 +63,6 @@ class UniversalModel {
 
     const { rows } = await db.query(queryStatement);
 
-    console.log(rows);
-
     return rows;
   }
 }

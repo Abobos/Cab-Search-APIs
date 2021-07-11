@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Property Pro Lite RESTFUL API",
-    "description": "Property Pro Lite is a platform where people can create and/or search for properties for sale or rent",
+    "title": "Cabs Search System Application RESTFUL API",
+    "description": "Cabs Search System Application REST API is an api that exposes api endpoints that",
     "termsOfService": "http://swagger.io/terms/",
     "contact": {
       "name": "Blessing Makaraba",
@@ -18,26 +18,30 @@
   "basePath": "/api/v1",
   "tags": [
     {
-      "name": "Users",
+      "name": "Drivers",
       "description": "API endpoint for users in the system"
     },
     {
-      "name": "Properties",
-      "description": "API endpoint for property posted by users in the system"
+      "name": "Locations",
+      "description": "API endpoint for saving driver location"
+    },
+    {
+      "name": "Cabs",
+      "description": "API endpoint for getting available cars"
     }
   ],
   "schemes": ["https", "http"],
   "paths": {
-    "/auth/signup": {
+    "/drivers": {
       "post": {
         "tags": ["Drivers"],
-        "summary": "Creates a new user",
+        "summary": "Register a new driver",
         "description": "",
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "user",
+            "name": "driver",
             "in": "body",
             "summary": "",
             "description": "Details of the driver register",
@@ -50,556 +54,158 @@
         ],
         "responses": {
           "201": {
-            "description": "Creates a new user"
+            "description": "Register a new driver"
           },
           "409": {
-            "description": "This email already exists"
+            "description": "email already exists"
           },
           "422": {
-            "description": "Invalid inputs"
+            "description": "validation errors"
           }
         }
       }
     },
-    "/auth/signin": {
+    "/drivers/;token/verify": {
       "post": {
-        "tags": ["Users"],
-        "summary": "Signin an existing user",
+        "tags": ["Drivers"],
+        "summary": "Verify a drivers' email",
         "description": "",
-        "operationId": "SignInAUser",
+        "operationId": "VerifyADriversEmail",
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
           {
             "name": "user",
-            "in": "body",
+            "in": "path",
             "summary": "",
             "desciption": "Details of user that wants to sign in",
             "operationId": "SignInAUser",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Signin"
-            }
+            "type": "string",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Signin an existing user"
+            "description": "verification successful"
           },
-          "404": {
-            "description": "Invalid credentials"
-          },
-          "422": {
-            "description": "Invalid inputs"
+          "401": {
+            "description": "Authentication Failed"
           }
         }
       }
     },
-    "/auth/{user_email}/reset_password": {
+
+    "/locations": {
       "post": {
-        "tags": ["Users"],
-        "summary": "user can reset his/her password",
+        "tags": ["Locations"],
+        "summary": "Save a driver location",
         "description": "",
-        "operationId": "resetPassword",
-        "consumes": ["application/json"],
-        "parameters": [
-          {
-            "name": "user_email",
-            "in": "path",
-            "description": "type of property to fetch",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "body",
-            "description": "old password and new password of user",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "password": {
-                  "type": "string",
-                  "example": "Blesdfnnjkjk9"
-                },
-                "new_password": {
-                  "type": "string",
-                  "example": "Blesdfnjk9"
-                }
-              }
-            }
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "404": {
-            "description": "Invalid credentials"
-          },
-          "422": {
-            "description": "email is invalid"
-          }
-        }
-      }
-    },
-    "/property": {
-      "post": {
-        "tags": ["Properties"],
-        "summary": "Post new property advert",
-        "description": "",
-        "oprationId": "PostAPropertyAdvert",
+        "oprationId": "CreateADriverLocation",
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
           {
             "name": "type",
-            "in": "formData",
-            "description": "Type of the property",
+            "in": "body",
+            "description": "drivers' Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "body",
+            "description": "drivers' latitude",
             "required": true,
             "type": "string"
           },
           {
             "name": "state",
-            "in": "formData",
-            "description": "state where the property is situated",
+            "in": "body",
+            "description": "drivers' longitude",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "city",
-            "in": "formData",
-            "description": "The city where the property is situated",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "address",
-            "in": "formData",
-            "description": "address of the property",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "price",
-            "in": "formData",
-            "description": "price of the property",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "image_url",
-            "in": "formData",
-            "description": "The avatar of the user",
-            "required": true,
-            "type": "file"
           }
         ],
         "responses": {
           "201": {
-            "description": "Property Advert Created Successfully",
-            "schema": {
-              "$ref": "#/definitions/PostPropertyAdvert"
-            }
+            "description": "Drivers' location saved succcessfully"
           },
           "422": {
-            "description": "Invalid input fields"
-          }
-        }
-      },
-      "get": {
-        "tags": ["Properties"],
-        "summary": "View all Properties advert",
-        "description": "",
-        "operationId": "GetAllPropertiesAdvert",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Property Advert Created Successfully",
-            "schema": {
-              "type": "array",
-              "$ref": "#/definitions/getPropertiesAdvert"
-            }
+            "description": "validation errors"
           }
         }
       }
     },
-    "/property?type=propertyType": {
-      "get": {
-        "tags": ["Properties"],
-        "summary": "Get all Properties Advert of a specific type",
+    "/cabs": {
+      "post": {
+        "tags": ["Cabs"],
+        "summary": "Get available cabs",
         "description": "",
-        "operationId": "GetSpecificPropertiesAdvert",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "oprationId": "GetAvailableCabs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "type",
-            "in": "query",
-            "description": "type of property to fetch",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Property Advert Created Successfully",
-            "schema": {
-              "type": "array",
-              "$ref": "#/definitions/getPropertiesAdvert"
-            }
-          }
-        }
-      }
-    },
-    "/property/{propertyId}": {
-      "get": {
-        "tags": ["Properties"],
-        "summary": "Get a specific property Details",
-        "description": "",
-        "operationId": "GetASpecificPropertyDetails",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "propertyId",
-            "in": "path",
-            "description": "type of property to fetch",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Specific Property",
-            "schema": {
-              "type": "array",
-              "$ref": "#/definitions/getPropertiesAdvert"
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": ["Properties"],
-        "summary": "Update the price of a specific property",
-        "description": "",
-        "consumes": "application/json",
-        "operationId": "UpdatePropertyPrice",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "propertyId",
-            "in": "path",
-            "description": "type of property to fetch",
+            "in": "body",
+            "description": "passenger's latitude",
             "required": true,
             "type": "string"
           },
           {
-            "name": "price",
+            "name": "state",
             "in": "body",
-            "description": "new price",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "price": {
-                  "type": "string",
-                  "example": "3404040.4"
-                }
-              }
-            }
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Property that the price has been updated",
-            "schema": {
-              "type": "array",
-              "$ref": "#/definitions/getPropertiesAdvert"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": ["Properties"],
-        "summary": "Delete a specific property",
-        "description": "Only an agent can delete a specific property",
-        "operationId": "DeleteASpecificProperty",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "propertyId",
-            "in": "path",
-            "description": "type of property to fetch",
+            "description": "passenger's longitude",
             "required": true,
             "type": "string"
           }
         ],
-        "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "A message indicating that a property has been deleted"
-          }
-        }
-      }
-    },
-    "/property/{propertyId}/sold": {
-      "patch": {
-        "tags": ["Properties"],
-        "summary": "Mark a Property Advert as sold",
-        "description": "",
-        "consumes": "application/json",
-        "operationId": "MarkAPropertyAsSold",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "propertyId",
-            "in": "path",
-            "description": "type of property to fetch",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Property that has been mark as sold"
-          }
-        }
-      }
-    },
-    "/flag": {
-      "post": {
-        "tags": ["Properties"],
-        "summary": "Flag a property advert as fraudulent",
-        "description": "",
-        "consumes": "application/json",
-        "operationId": "FlagAPropertyAdvert",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "flag description",
-            "in": "body",
-            "description": "necessary parameters to flag an advert as fradulent",
-            "schema": {
-              "type": "object",
-              "requrired": ["property_id", "reason", "description"],
-              "properties": {
-                "property_id": {
-                  "type": "string",
-                  "example": "1"
-                },
-                "reason": {
-                  "type": "string",
-                  "example": "weird demands"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "The demand is so high"
-                }
-              }
-            }
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "201": {
-            "description": "Property Advert flag successfully"
+            "description": "Location Retrieved Successfully"
           },
           "422": {
-            "description": "Please enter a valid reason and description"
+            "description": "validation errors"
           }
         }
       }
     }
   },
+
   "definitions": {
-    "Signup": {
+    "RegisterDriver": {
       "type": "object",
       "required": [
+        "name",
         "email",
-        "password",
-        "first_name",
-        "last_name",
-        "address",
-        "phone_number"
+        "phone_number",
+        "license_number",
+        "car_number"
       ],
       "properties": {
-        "first_name": {
+        "name": {
           "type": "string",
-          "example": "Blessing"
-        },
-        "last_name": {
-          "type": "string",
-          "example": "Makaraba"
+          "example": "Blessing Makaraba Abobo"
         },
         "email": {
           "type": "string",
-          "example": "blessingmakaraba@gmail.com"
-        },
-        "password": {
-          "type": "string",
-          "example": "Bless3"
-        },
-        "address": {
-          "type": "string",
-          "example": "NO. 9 Omoru"
+          "example": "suspieabobo@yahoo.com"
         },
         "phone_number": {
           "type": "string",
-          "example": "08167672019"
+          "example": "8167672019"
+        },
+        "license_number": {
+          "type": "string",
+          "example": "ADC12819BC3"
+        },
+        "car_number": {
+          "type": "string",
+          "example": "AH-01-ZA-0838"
         }
       },
       "xml": {
-        "name": "CreateAccount"
-      }
-    },
-    "Signin": {
-      "type": "object",
-      "required": ["email", "password"],
-      "properties": {
-        "email": {
-          "type": "string",
-          "example": "blessingmakaraba@gmail.com"
-        },
-        "password": {
-          "type": "string",
-          "example": "Bless3"
-        }
-      },
-      "xml": {
-        "name": "Signin"
-      }
-    },
-    "PostPropertyAdvert": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "example": "1"
-        },
-        "owner": {
-          "type": "integer",
-          "example": "1"
-        },
-        "status": {
-          "type": "integer",
-          "example": "available"
-        },
-        "type": {
-          "type": "string",
-          "example": "3 bedroom"
-        },
-        "price": {
-          "type": "float",
-          "example": "3999879.02"
-        },
-        "state": {
-          "type": "string",
-          "example": "Delta"
-        },
-        "city": {
-          "type": "string",
-          "example": "Warri"
-        },
-        "address": {
-          "type": "string",
-          "example": "No. 9 Omoru"
-        },
-        "created_on": {
-          "type": "string",
-          "example": "25th January, 2018"
-        },
-        "image_url": {
-          "type": "string",
-          "example": "https://res.cloudinary.com/property-pro-lite/image/upload/v1561326667/iiyxcceemy20eeincxlf.jpg"
-        }
-      },
-      "xml": {
-        "name": "PostPropertyAdvert"
-      }
-    },
-    "getPropertiesAdvert": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "example": "1"
-        },
-        "owner": {
-          "type": "integer",
-          "example": "1"
-        },
-        "status": {
-          "type": "integer",
-          "example": "available"
-        },
-        "type": {
-          "type": "string",
-          "example": "3 bedroom"
-        },
-        "price": {
-          "type": "float",
-          "example": "3999879.02"
-        },
-        "state": {
-          "type": "string",
-          "example": "Delta"
-        },
-        "city": {
-          "type": "string",
-          "example": "Warri"
-        },
-        "address": {
-          "type": "string",
-          "example": "No. 9 Omoru"
-        },
-        "created_on": {
-          "type": "string",
-          "example": "25th January, 2018"
-        },
-        "image_url": {
-          "type": "string",
-          "example": "https://res.cloudinary.com/property-pro-lite/image/upload/v1561326667/iiyxcceemy20eeincxlf.jpg"
-        },
-        "owner_phonenumber": {
-          "type": "string",
-          "example": "08167672019"
-        },
-        "owner_email": {
-          "type": "email",
-          "example": "blessingmakaraba@gmail.com"
-        }
-      },
-      "xml": {
-        "name": "getPropertiesAdvert"
+        "name": "RegisterDriver"
       }
     }
   }

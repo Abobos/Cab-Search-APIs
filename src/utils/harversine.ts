@@ -1,5 +1,8 @@
-//This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
-const haversine = (
+const toRad = (value: number): number => {
+  return (value * Math.PI) / 180;
+};
+
+export const calculateHaversineDistance = (
   latitude1: number,
   longitude1: number,
   latitude2: number,
@@ -23,9 +26,4 @@ const haversine = (
   const distance = R * c;
 
   return distance;
-};
-
-// Converts numeric degrees to radians
-const toRad = (value: number): number => {
-  return (value * Math.PI) / 180;
 };

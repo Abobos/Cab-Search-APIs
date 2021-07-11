@@ -1,5 +1,3 @@
-import { Request } from "express";
-
 export interface envrionmentDetails {
   envVariable: string;
   dialect: string;
@@ -36,4 +34,12 @@ export interface objectLiteral {
 export interface UserData {
   id: number;
   email: string;
+}
+
+export interface AvailableCars {
+  name: string;
+  car_number: string;
+  phone_number: string;
+  latitude: string;
+  longitude: string;
 }

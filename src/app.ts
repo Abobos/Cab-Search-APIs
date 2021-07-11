@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import swaggerUi from "swagger-ui-express";
+import morgan from "morgan";
 
 import indexRoute from "./routes";
 
@@ -23,6 +24,8 @@ export class App {
   middlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
+
+    this.app.use(morgan("dev"));
 
     this.app.use(
       "/api-docs",
