@@ -1,10 +1,14 @@
 import { Router } from "express";
 
-import { validator } from "@middlewares/validate";
-import DriverController from "@controllers/driver";
+import LocationController from "@controllers/location";
 
+import { validateLocationDetails } from "@middlewares/validate";
 const locationRouter = Router();
 
-locationRouter.post("/location", validator, DriverController.register);
+locationRouter.post(
+  "/locations",
+  validateLocationDetails,
+  LocationController.saveDriverLocation
+);
 
 export default locationRouter;

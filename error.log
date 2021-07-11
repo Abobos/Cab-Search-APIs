@@ -48,3 +48,65 @@
     at DriverRpository.Update (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/build/repositories/driver.js:61:31)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async verify (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/build/controllers/driver.js:51:28)
+2021-07-11 15:08:43 error: email-error: Invalid login: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbu
+534-5.7.14 lHHcbS5CG0aQlX3a6c9w5jr_aekl8nU9vsrIhJpkfMXmv8KPLSfQ4HGvyNP2qEuorM2i6
+534-5.7.14 rBZDWSgvndizNtAOsfNCMutaH9G1QuYWUeyUBOCpi5mUTuYnIhpNdNSxJKQZ-yp->
+534-5.7.14 Please log in via your web browser and then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 v13sm6611003edl.47 - gsmtp
+2021-07-11 18:51:33 error: 500 Cannot read property 'trim' of undefined 
+ TypeError: Cannot read property 'trim' of undefined
+    at saveDriverLocation (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/build/controllers/location.js:13:57)
+    at Layer.handle [as handle_request] (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/route.js:137:13)
+    at validateLocationDetails (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/build/middlewares/validate.js:31:5)
+    at Layer.handle [as handle_request] (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/express/lib/router/index.js:335:12)
+2021-07-11 18:58:48 error: 500 column "driverid" does not exist 
+ error: column "driverid" does not exist
+    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:284:9)
+    at Socket.Readable.push (_stream_readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+2021-07-11 19:06:07 error: 500 argument of WHERE must be type boolean, not type numeric 
+ error: argument of WHERE must be type boolean, not type numeric
+    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:284:9)
+    at Socket.Readable.push (_stream_readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+2021-07-11 19:06:34 error: 500 argument of WHERE must be type boolean, not type numeric 
+ error: argument of WHERE must be type boolean, not type numeric
+    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:284:9)
+    at Socket.Readable.push (_stream_readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+2021-07-11 19:16:36 error: 500 argument of WHERE must be type boolean, not type numeric 
+ error: argument of WHERE must be type boolean, not type numeric
+    at Parser.parseErrorMessage (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:369:69)
+    at Parser.handlePacket (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:188:21)
+    at Parser.parse (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/parser.ts:103:30)
+    at Socket.<anonymous> (/Users/blessingmakaraba/Desktop/projects/Cab-Search-APIs/node_modules/pg-protocol/src/index.ts:7:48)
+    at Socket.emit (events.js:315:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:284:9)
+    at Socket.Readable.push (_stream_readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)

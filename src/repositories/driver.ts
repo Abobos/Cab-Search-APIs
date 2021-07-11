@@ -1,8 +1,8 @@
 import Model from "../models";
 
-import { ConflictError, InternalServerError } from "../exceptions";
+import { ConflictError } from "../exceptions";
 
-class DriverRpository {
+class DriverRepository {
   public driver: Model;
 
   constructor() {
@@ -72,4 +72,4 @@ class DriverRpository {
   }
 }
 
-export default new DriverRpository();
+export default new DriverRepository();

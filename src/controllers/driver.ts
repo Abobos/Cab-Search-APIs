@@ -7,8 +7,6 @@ import { sendSuccessResponse } from "@modules/sendResponse";
 import { createToken } from "@utils/tokenHandler";
 import sendEmail from "@services/email";
 
-import { AuthenticationError } from "../exceptions";
-
 class AuthController {
   static async register(req: Request, res: Response, next: NextFunction) {
     try {
@@ -44,11 +42,12 @@ class AuthController {
         msg
       );
 
-      let message = "";
+      let message =
+        "your registration is successful. A verification link has been sent to your email, Kindly verify your email to enjoy the cars search service";
 
-      if (emailResponse) {
+      if (!emailResponse) {
         message =
-          "your registration is successful. A verification link has been sent to your email, Kindly verify your email to enjoy the cars search service";
+          "your registration is successful, but we couldn't send your  verification link to your email.";
       }
       return sendSuccessResponse(res, 201, message, {
         id,
@@ -67,20 +66,8 @@ class AuthController {
     try {
       const userData = req;
 
-      const findColumn = "*";
-
-      const findCondition = `id = ${userData.user.id} AND email = '${userData.user.email}'`;
-
-      const driver = await DriverRepository.findOne(findColumn, findCondition);
-
-      console.log({ driver });
-
-      if (!driver) throw new AuthenticationError("Invalid Credentials");
-
       const column = "isverified";
-
       const condition = `id = ${userData.user.id} AND email = '${userData.user.email}'`;
-
       const values = "TRUE";
 
       await DriverRepository.Update(column, condition, values);

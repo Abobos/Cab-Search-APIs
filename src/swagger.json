@@ -1,0 +1,606 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Property Pro Lite RESTFUL API",
+    "description": "Property Pro Lite is a platform where people can create and/or search for properties for sale or rent",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "Blessing Makaraba",
+      "email": "blessingmakaraba@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API endpoint for users in the system"
+    },
+    {
+      "name": "Properties",
+      "description": "API endpoint for property posted by users in the system"
+    }
+  ],
+  "schemes": ["https", "http"],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": ["Drivers"],
+        "summary": "Creates a new user",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "summary": "",
+            "description": "Details of the driver register",
+            "operationId": "RegisterDriver",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Drivers"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Creates a new user"
+          },
+          "409": {
+            "description": "This email already exists"
+          },
+          "422": {
+            "description": "Invalid inputs"
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Signin an existing user",
+        "description": "",
+        "operationId": "SignInAUser",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "summary": "",
+            "desciption": "Details of user that wants to sign in",
+            "operationId": "SignInAUser",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Signin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signin an existing user"
+          },
+          "404": {
+            "description": "Invalid credentials"
+          },
+          "422": {
+            "description": "Invalid inputs"
+          }
+        }
+      }
+    },
+    "/auth/{user_email}/reset_password": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "user can reset his/her password",
+        "description": "",
+        "operationId": "resetPassword",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_email",
+            "in": "path",
+            "description": "type of property to fetch",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "old password and new password of user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "type": "string",
+                  "example": "Blesdfnnjkjk9"
+                },
+                "new_password": {
+                  "type": "string",
+                  "example": "Blesdfnjk9"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "404": {
+            "description": "Invalid credentials"
+          },
+          "422": {
+            "description": "email is invalid"
+          }
+        }
+      }
+    },
+    "/property": {
+      "post": {
+        "tags": ["Properties"],
+        "summary": "Post new property advert",
+        "description": "",
+        "oprationId": "PostAPropertyAdvert",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "Type of the property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "formData",
+            "description": "state where the property is situated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "in": "formData",
+            "description": "The city where the property is situated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "address of the property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "description": "price of the property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image_url",
+            "in": "formData",
+            "description": "The avatar of the user",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Property Advert Created Successfully",
+            "schema": {
+              "$ref": "#/definitions/PostPropertyAdvert"
+            }
+          },
+          "422": {
+            "description": "Invalid input fields"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Properties"],
+        "summary": "View all Properties advert",
+        "description": "",
+        "operationId": "GetAllPropertiesAdvert",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Property Advert Created Successfully",
+            "schema": {
+              "type": "array",
+              "$ref": "#/definitions/getPropertiesAdvert"
+            }
+          }
+        }
+      }
+    },
+    "/property?type=propertyType": {
+      "get": {
+        "tags": ["Properties"],
+        "summary": "Get all Properties Advert of a specific type",
+        "description": "",
+        "operationId": "GetSpecificPropertiesAdvert",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type of property to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Property Advert Created Successfully",
+            "schema": {
+              "type": "array",
+              "$ref": "#/definitions/getPropertiesAdvert"
+            }
+          }
+        }
+      }
+    },
+    "/property/{propertyId}": {
+      "get": {
+        "tags": ["Properties"],
+        "summary": "Get a specific property Details",
+        "description": "",
+        "operationId": "GetASpecificPropertyDetails",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "type of property to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Specific Property",
+            "schema": {
+              "type": "array",
+              "$ref": "#/definitions/getPropertiesAdvert"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Properties"],
+        "summary": "Update the price of a specific property",
+        "description": "",
+        "consumes": "application/json",
+        "operationId": "UpdatePropertyPrice",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "type of property to fetch",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "new price",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "type": "string",
+                  "example": "3404040.4"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Property that the price has been updated",
+            "schema": {
+              "type": "array",
+              "$ref": "#/definitions/getPropertiesAdvert"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Properties"],
+        "summary": "Delete a specific property",
+        "description": "Only an agent can delete a specific property",
+        "operationId": "DeleteASpecificProperty",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "type of property to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A message indicating that a property has been deleted"
+          }
+        }
+      }
+    },
+    "/property/{propertyId}/sold": {
+      "patch": {
+        "tags": ["Properties"],
+        "summary": "Mark a Property Advert as sold",
+        "description": "",
+        "consumes": "application/json",
+        "operationId": "MarkAPropertyAsSold",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "type of property to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Property that has been mark as sold"
+          }
+        }
+      }
+    },
+    "/flag": {
+      "post": {
+        "tags": ["Properties"],
+        "summary": "Flag a property advert as fraudulent",
+        "description": "",
+        "consumes": "application/json",
+        "operationId": "FlagAPropertyAdvert",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "flag description",
+            "in": "body",
+            "description": "necessary parameters to flag an advert as fradulent",
+            "schema": {
+              "type": "object",
+              "requrired": ["property_id", "reason", "description"],
+              "properties": {
+                "property_id": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "weird demands"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "The demand is so high"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Property Advert flag successfully"
+          },
+          "422": {
+            "description": "Please enter a valid reason and description"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Signup": {
+      "type": "object",
+      "required": [
+        "email",
+        "password",
+        "first_name",
+        "last_name",
+        "address",
+        "phone_number"
+      ],
+      "properties": {
+        "first_name": {
+          "type": "string",
+          "example": "Blessing"
+        },
+        "last_name": {
+          "type": "string",
+          "example": "Makaraba"
+        },
+        "email": {
+          "type": "string",
+          "example": "blessingmakaraba@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Bless3"
+        },
+        "address": {
+          "type": "string",
+          "example": "NO. 9 Omoru"
+        },
+        "phone_number": {
+          "type": "string",
+          "example": "08167672019"
+        }
+      },
+      "xml": {
+        "name": "CreateAccount"
+      }
+    },
+    "Signin": {
+      "type": "object",
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "blessingmakaraba@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Bless3"
+        }
+      },
+      "xml": {
+        "name": "Signin"
+      }
+    },
+    "PostPropertyAdvert": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "1"
+        },
+        "owner": {
+          "type": "integer",
+          "example": "1"
+        },
+        "status": {
+          "type": "integer",
+          "example": "available"
+        },
+        "type": {
+          "type": "string",
+          "example": "3 bedroom"
+        },
+        "price": {
+          "type": "float",
+          "example": "3999879.02"
+        },
+        "state": {
+          "type": "string",
+          "example": "Delta"
+        },
+        "city": {
+          "type": "string",
+          "example": "Warri"
+        },
+        "address": {
+          "type": "string",
+          "example": "No. 9 Omoru"
+        },
+        "created_on": {
+          "type": "string",
+          "example": "25th January, 2018"
+        },
+        "image_url": {
+          "type": "string",
+          "example": "https://res.cloudinary.com/property-pro-lite/image/upload/v1561326667/iiyxcceemy20eeincxlf.jpg"
+        }
+      },
+      "xml": {
+        "name": "PostPropertyAdvert"
+      }
+    },
+    "getPropertiesAdvert": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "1"
+        },
+        "owner": {
+          "type": "integer",
+          "example": "1"
+        },
+        "status": {
+          "type": "integer",
+          "example": "available"
+        },
+        "type": {
+          "type": "string",
+          "example": "3 bedroom"
+        },
+        "price": {
+          "type": "float",
+          "example": "3999879.02"
+        },
+        "state": {
+          "type": "string",
+          "example": "Delta"
+        },
+        "city": {
+          "type": "string",
+          "example": "Warri"
+        },
+        "address": {
+          "type": "string",
+          "example": "No. 9 Omoru"
+        },
+        "created_on": {
+          "type": "string",
+          "example": "25th January, 2018"
+        },
+        "image_url": {
+          "type": "string",
+          "example": "https://res.cloudinary.com/property-pro-lite/image/upload/v1561326667/iiyxcceemy20eeincxlf.jpg"
+        },
+        "owner_phonenumber": {
+          "type": "string",
+          "example": "08167672019"
+        },
+        "owner_email": {
+          "type": "email",
+          "example": "blessingmakaraba@gmail.com"
+        }
+      },
+      "xml": {
+        "name": "getPropertiesAdvert"
+      }
+    }
+  }
+}

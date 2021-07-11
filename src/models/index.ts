@@ -1,4 +1,5 @@
 import db from "@config/pool";
+import { query } from "express";
 import {
   queryParamsI,
   queryParamsII,
@@ -45,6 +46,18 @@ class UniversalModel {
 
   async update(queryDetails: queryParamsIV): Promise<any> {
     const queryStatement = `UPDATE ${this.resource} SET ${queryDetails.column} = '${queryDetails.values}'
+                            WHERE ${queryDetails.condition} RETURNING ${queryDetails.column}`;
+    logger.info(queryStatement);
+
+    const { rows } = await db.query(queryStatement);
+
+    console.log(rows);
+
+    return rows;
+  }
+
+  async updateMultiple(queryDetails: queryParamsIV): Promise<any> {
+    const queryStatement = `UPDATE ${this.resource} SET ${queryDetails.column} = ${queryDetails.values}, ${queryDetails.columnII} = ${queryDetails.valuesII}
                             WHERE ${queryDetails.condition} RETURNING ${queryDetails.column}`;
     logger.info(queryStatement);
 

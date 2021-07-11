@@ -6,7 +6,7 @@ export const sendErrorResponse = (
   errorMessage: any
 ) =>
   res.status(code).send({
-    status: "error",
+    status: "failure",
     error: errorMessage,
   });
 
@@ -20,4 +20,14 @@ export const sendSuccessResponse = (
     status: "success",
     message,
     data,
+  });
+
+export const sendSuccessResponseII = (
+  res: Response,
+  code: number,
+  message: string
+) =>
+  res.status(code).send({
+    status: "success",
+    message,
   });

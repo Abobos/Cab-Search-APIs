@@ -9,7 +9,10 @@ import {
   validateAgainstRegex,
   errorChecker,
   magicTrimmer,
+  locationRegex,
+  driverIdRegex,
 } from "@modules/validator";
+
 import { sendErrorResponse } from "@modules/sendResponse";
 
 export const validator = (req: Request, res: Response, next: NextFunction) => {
@@ -46,4 +49,22 @@ export const validator = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export default validator;
+export const validateLocationDetails = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { driverId, latitude, longitude } = req.body;
+
+  const validationSchema = {
+    driverId: validateAgainstRegex(driverId, driverIdRegex, "driverId"),
+    latitude: validateAgainstRegex(latitude, locationRegex, "latitude"),
+    longitude: validateAgainstRegex(longitude, locationRegex, "longitude"),
+  };
+
+  const errors = errorChecker(validationSchema);
+
+  if (errors) return sendErrorResponse(res, 422, errors);
+
+  next();
+};

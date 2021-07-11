@@ -12,6 +12,10 @@ export const carNumberRegex: RegExp = /^[A-Z]{2}-\d{2}-[A-Z]{2}-\d{4}$/;
 
 export const phoneNumberRegex: RegExp = /[\d]{10}/;
 
+export const locationRegex: RegExp = /^[1-9][\.\d]*(,\d+)?$/;
+
+export const driverIdRegex: RegExp = /^[0-9]{1,}$/;
+
 export const magicTrimmer = (payload: objectLiteral): objectLiteral => {
   const data = {};
 
@@ -48,6 +52,17 @@ export const validateAgainstRegex = (
     case "car_number": {
       errorMessage =
         "car number is not valid. It should be of the form 'MH-01-XX-0001'";
+      break;
+    }
+
+    case "latitude" || "longitude": {
+      errorMessage =
+        "Enter a valid latitude or longitude. location coordinate is of the form 4.4090, 67.534";
+      break;
+    }
+
+    case "driverId": {
+      errorMessage = "The driverId is not valid. This is an integer number";
       break;
     }
 

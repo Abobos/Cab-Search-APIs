@@ -25,17 +25,15 @@ export interface queryParamsIV {
   column: string;
   condition: string;
   values: string;
+  columnII?: string;
+  valuesII?: string;
 }
 
 export interface objectLiteral {
   [props: string]: any;
 }
 
-interface UserData {
+export interface UserData {
   id: number;
   email: string;
-}
-
-export interface RequestWithUser extends Request {
-  user: UserData;
 }

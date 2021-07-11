@@ -1,7 +1,11 @@
 import express, { Application } from "express";
+import swaggerUi from "swagger-ui-express";
 
 import indexRoute from "./routes";
+
 import { defaultErrorHandler } from "@middlewares/error";
+
+import swaggerDocument from "./swagger.json";
 
 export class App {
   public app: Application;
@@ -19,6 +23,12 @@ export class App {
   middlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
+
+    this.app.use(
+      "/api-docs",
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerDocument)
+    );
 
     this.app.use(indexRoute);
 
