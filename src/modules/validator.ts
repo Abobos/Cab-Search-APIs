@@ -10,7 +10,7 @@ export const licenseNumberRegex: RegExp =
 
 export const carNumberRegex: RegExp = /^[A-Z]{2}-\d{2}-[A-Z]{2}-\d{4}$/;
 
-export const phoneNumberRegex: RegExp = /[\d]{10}/;
+export const phoneNumberRegex: RegExp = /^\d{10}$/;
 
 export const locationRegex: RegExp = /^[0-9][\.\d]*(,\d+)?$/;
 
@@ -36,7 +36,6 @@ export const validateAgainstRegex = (
 ): any => {
   let errorMessage: string = "";
 
-  console.log({ value, regexType });
   if (typeof value !== "number") {
     if (!value) return null;
   }

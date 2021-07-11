@@ -20,4 +20,19 @@ describe("App", () => {
         done();
       });
   });
+
+  it("Should return not found message for unavailable route", (done) => {
+    chai
+      .request(app)
+      .get("/many")
+      .end((err, res) => {
+        expect(res.status).to.be.eql(404);
+        expect(res.body).to.be.an("object");
+        expect(res.body.status).to.eql("failure");
+        expect(res.body.error).to.eql(
+          "This route is unavailable on the server"
+        );
+        done();
+      });
+  });
 });

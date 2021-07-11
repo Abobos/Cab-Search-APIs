@@ -56,10 +56,8 @@ export const validateLocationDetails = (
 ) => {
   const locationData = magicTrimmer(req.body);
 
-  console.log({ locationData });
   const { driverId, latitude, longitude } = locationData;
 
-  console.log({ latitude });
   const validationSchema = {
     driverId: validateAgainstRegex(driverId, driverIdRegex, "driverId"),
     latitude: validateAgainstRegex(latitude, locationRegex, "latitude"),

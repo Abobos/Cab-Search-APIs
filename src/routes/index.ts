@@ -24,7 +24,7 @@ router.get("/", (req: Request, res: Response) =>
 router.use("/api/v1", [driverRoute, locationRoute, carRoute]);
 
 router.all("*", (req: Request, res: Response) =>
-  sendErrorResponse(res, 200, "This route is unavailable on the server")
+  sendErrorResponse(res, 404, "This route is unavailable on the server")
 );
 
 export default router;

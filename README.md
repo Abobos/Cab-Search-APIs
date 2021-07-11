@@ -6,17 +6,16 @@ Cab Search System Application Rest APIs is an api that allow users to get for av
 
 ### Required Features
 
-- User (admin) can register drivers
-- User (admin) can save location
+- User can register drivers
+- User can save location
 - User can get the nearest available cars
 
 #### Tools
 
 ##### Dev Tools
 
+- TYPESCRIPT
 - JAVASCRIPT(Node.js/Express.js)
-
-- Docker
 
 ##### Testing Framework
 
