@@ -25,7 +25,7 @@ Cab Search System Application Rest APIs is an api that allow users to get for av
 
 #### API Docs
 
-- [Swagger](https://car-search-apis.herokuapp.com//api-docs)
+- [Swagger](https://car-search-apis.herokuapp.com/api-docs)
 
 #### Getting Started
 
