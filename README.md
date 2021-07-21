@@ -1,6 +1,6 @@
 # Cab-Search-APIs
 
-Cab Search System Application Rest APIs is an api that allow users to get for available cars
+Cab Search System Application Rest APIs is an api that allow users to get available cars
 
 ## Features
 
