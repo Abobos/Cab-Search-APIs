@@ -1,6 +1,6 @@
 # Cab-Search-APIs
 
-Cab Search System Application Rest APIs is an api that allow users to get for available cars
+Cab Search System Application Rest APIs is an api that allow users to get available cars
 
 ## Features
 
@@ -25,11 +25,11 @@ Cab Search System Application Rest APIs is an api that allow users to get for av
 
 #### API Docs
 
-- [Swagger](https://car-search-apis.herokuapp.com//api-docs)
+- [Swagger](https://car-search-apis.herokuapp.com/api-docs)
 
 #### Getting Started
 
-To setup Property Pro Lite, These tools should be installed in your PC
+To setup Cabs Search System Application Rest API, These tools should be installed in your PC
 
 - [Node js](https://nodejs.org/en/download/)
 - [Insonmia](https://insomnia.rest/download/) or [Postman](https://www.getpostman.com/downloads/)
