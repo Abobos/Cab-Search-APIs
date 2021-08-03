@@ -24,15 +24,13 @@ router.get("/", (req: Request, res: Response) =>
 );
 
 router.get(
-  "/justeat",
+  "/justeat/:code",
   (req: Request, res: Response) => {
-    console.log("I'm here");
-
     const https = require("https");
-
+    console.log(req.params);
     https
       .get(
-        "https://uk.api.just-eat.io/restaurants/bypostcode/ec4m",
+        `https://uk.api.just-eat.io/restaurants/bypostcode/${req.params.code}`,
         (resp: any) => {
           let data = "";
 
